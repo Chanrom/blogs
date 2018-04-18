@@ -24,7 +24,7 @@ tags:
 
 # 参考
 
-目前主要参考的建站博客是[keysai](https://keysaim.github.io/post/blog/deploy-hugo-blog-in-github.io/)，完全按照这个博客的做法就可以搭建成功。
+目前主要参考的建站博客是[keysaim](https://keysaim.github.io/post/blog/deploy-hugo-blog-in-github.io/)，完全按照这个博客的做法就可以搭建成功。
 
 # 结语
 
