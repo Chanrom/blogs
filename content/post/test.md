@@ -8,3 +8,7 @@ categories:
     - github
 comment: true
 ---
+
+# 如何学习Linux
+
+撒打发第三方asdf大
