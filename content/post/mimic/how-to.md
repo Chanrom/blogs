@@ -3,9 +3,7 @@ layout:     post
 title:      "使用Github搭建Hugo博客站"
 subtitle:   "Github+Hugo"
 date:       2018-04-18
-author:     "Chanrom"
 header-img: ""
-catalog:    true
 tags:
     - Github
     - Hugo
