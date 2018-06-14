@@ -232,7 +232,26 @@ comment: true
 使用两个指针可以解决不少的问题，特别是有关数组的题目上，这里从易到难介绍几道题目(从二分搜索到复杂一点的二分搜索33，34)。
 
 
-# 回溯
+# 快速排序
+
+快速排序是很基本的一种排序算法，在面试中经常被问道，而且很多题目也是基于快速排序的一个变形。这里给出一个基本的实现：
+网上很多解法，通常是利用递归进行广度搜索：
+```python
+    def partition(a, l, r):
+        flag = a[r]
+        j = l - 1
+        for i in range(l, r):
+            if a[i] <= flag:
+                j += 1
+                a[i], a[j] = a[j], a[i]
+        a[j + 1], a[r] = a[r], a[j + 1]
+        return j + 1
+    def Quicksort(a, l, r):
+        if l < r:
+            q = partition(a, l, r)
+            Quicksort(a, l, q - 1)
+            Quicksort(a, q + 1, r)
+```
 
 
 
