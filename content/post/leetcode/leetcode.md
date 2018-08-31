@@ -231,6 +231,80 @@ comment: true
 
 使用两个指针可以解决不少的问题，特别是有关数组的题目上，这里从易到难介绍几道题目(从二分搜索到复杂一点的二分搜索33，34)。
 
+# 链表问题
+链表问题好像在面试中考察的不多，但是相关的题目却比较有技巧性，以下简单的做一些分析。
+
+两个链表的第一个公共节点
+-----
+
+如果说可以借助其他数据结构的话，这道题目比较好解，比如借助栈来存储两个链表的元素，然后再从栈顶开始一一比对。如果不能借助其他数据结构呢（即空间复杂度为```O(1)```）？退一步考虑，如果两个链表有交点，那必要条件是从两个链表的末尾开始就相同，然后再往前的某个地方分开。因此，如果我们“对齐”两个链表的长度，从前往后扫描，如果在结束之前有相同节点，说明找到了第一个交点。
+```python
+  def getIntersectionNode(self, headA, headB):
+        if not headA or not headB:
+            return None
+        
+        def count(p):
+            m = 0
+            while p:
+                m += 1
+                p = p.next
+            return m
+
+        ma = count(headA)
+        mb = count(headB)
+        
+        if ma < mb:
+            ma, mb = mb, ma
+            headA, headB = headB, headA
+
+        n = ma - mb
+        while n > 0:
+            headA = headA.next
+            n = n - 1
+        while mb > 0:
+            if headA == headB:
+                return headA
+            mb -= 1
+            headA = headA.next
+            headB = headB.next
+        return None
+```
+
+反转链表
+-----
+有两种方法，非递归和递归的方法。
+```python
+    def reverseList(self, head):
+        # 递归
+        if not head:
+            return 
+        if not head.next:
+            return head
+        root = self.reverseList(head.next)
+        head.next.next = head
+        head.next = None
+        return root
+
+        # 以下为非递归
+        # cur = head
+        # prev = None
+        # while cur:
+        #     after = cur.next
+        #     cur.next = prev
+        #     prev = cur
+        #     cur = after
+        # return prev
+```
+
+链表中倒数第K个节点
+-----
+使用两个指针，第一个指针先走K个节点，然后第二个指针才开始和第一个指针一起走。当第一个指针到达链表尾端，第二个指针指向的节点就是倒数第K个节点。
+
+判断一个单向链表是否形成了环形结构。
+-----
+也是定义两个指针，一个快指针一次走一步，一个慢指针一次走两步，如果快指针追赶到了慢指针说明有环，若快指针变成NULL则无环。
+
+
 
 # 快速排序
 
